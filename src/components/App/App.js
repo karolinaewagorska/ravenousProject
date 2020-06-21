@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import BusinessList from '../BusinessList/BusinessList';
+import { conditionalExpression } from '@babel/types';
 
  const business = {
   imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
@@ -19,11 +20,16 @@ import BusinessList from '../BusinessList/BusinessList';
 const businesses = [business, business, business, business, business, business]
 
 class App extends React.Component {
+
+  searchYelp(term, location, sortBy) {
+    console.log(`You are searching for ${term}, ${location}, ${sortBy}`)
+  }
+
   render() {
     return (
       <div className="App">
         <h1>ravenous</h1>
-          <SearchBar />
+          <SearchBar  searchYelp={this.searchYelp} />
           <BusinessList businesses={businesses} /> 
       </div>
     )
